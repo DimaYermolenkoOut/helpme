@@ -1,21 +1,7 @@
 from django.db import models
 
-# Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
-class Tag(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
-
+from products.models.tag import Tag
+from products.models.category import Category
 
 
 class Product(models.Model):
@@ -31,5 +17,8 @@ class Product(models.Model):
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
 
+    # якщо неправильно вказати related_name міграція не працюватиме
+    orders = models.ManyToManyField('Order', through='OrderProduct', related_name='orders')
+
     def __str__(self):
-        return self.tittle
+        return f"{self.tittle} - {self.price}"
