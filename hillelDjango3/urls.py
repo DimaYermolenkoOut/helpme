@@ -24,7 +24,7 @@ router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'tags', TagViewSet)
-
+from .yasg import urlpatterns as doc_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,3 +32,5 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('', include(router.urls)),
 ]
+
+urlpatterns += doc_urls

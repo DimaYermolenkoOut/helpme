@@ -29,7 +29,7 @@ class TagViewSet(viewsets.ModelViewSet):
     serializer_class = TagSerializer
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.select_related('category').prefetch_related('tags').all()
     serializer_class = ProductSerializer
 
 
