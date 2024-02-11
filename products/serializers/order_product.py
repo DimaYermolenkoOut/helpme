@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
+from products.models import OrderProduct
 
-class OrerProductSerializer(serializers.Serializer):
+
+class OrderProductSerializer(serializers.ModelSerializer):
     product_id = serializers.IntegerField()
-    quantity = serializers.FloatField(min_value=1)
+    quantity = serializers.FloatField()
+
+    class Meta:
+        model = OrderProduct
+        fields = ('product_id', 'quantity')

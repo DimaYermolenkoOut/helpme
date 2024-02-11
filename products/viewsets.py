@@ -4,8 +4,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 import products
-from products.models import Product, Category, Tag
-from products.serializers import ProductSerializer, CategorySerializer, TagSerializer
+from products.models import Product, Category, Tag, Order
+from products.serializers import ProductSerializer, CategorySerializer, TagSerializer, OrderSerializer
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -33,3 +33,12 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 
 
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+
+# class ProductReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+#     queryset = Product.objects.select_related('category').prefetch_related('tags').all()
+#     serializer_class = ProductSerializer

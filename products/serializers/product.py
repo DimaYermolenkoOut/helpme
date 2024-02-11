@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
-from products.models import Product, Category, Tag
+from products.models import Product
+from products.serializers.category import CategorySerializer
+from products.serializers.tag import TagSerializer
 
 class ProductSerializer(serializers.ModelSerializer):
     price_usd = serializers.SerializerMethodField()

@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from products.viewsets import ProductViewSet, CategoryViewSet, TagViewSet
+from products.viewsets import ProductViewSet, CategoryViewSet, TagViewSet, OrderViewSet
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'tags', TagViewSet)
+router.register(r'orders', OrderViewSet)
 from .yasg import urlpatterns as doc_urls
 
 urlpatterns = [
